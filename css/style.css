@@ -40,27 +40,34 @@ body::before {
   pointer-events: none; z-index: 0; opacity: 0.35;
 }
 
-/* ── Cursor ── */
-.cursor {
-  width: 10px; height: 10px;
-  background: var(--red-bright); border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-  transition: transform 0.06s linear;
+/* ── Cursor (oculto en touch) ── */
+@media (hover: hover) {
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--red-bright); border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: transform 0.06s linear;
+  }
+  .cursor-ring {
+    width: 34px; height: 34px;
+    border: 1px solid rgba(231,76,60,0.4); border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.16s ease, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+  }
+  .cursor-ring.hover {
+    width: 50px; height: 50px;
+    border-color: rgba(231,76,60,0.7);
+  }
 }
-.cursor-ring {
-  width: 34px; height: 34px;
-  border: 1px solid rgba(231,76,60,0.4); border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.16s ease, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
-}
-.cursor-ring.hover {
-  width: 50px; height: 50px;
-  border-color: rgba(231,76,60,0.7);
+@media (hover: none) {
+  .cursor, .cursor-ring { display: none; }
+  body { cursor: auto; }
+  button, a { cursor: pointer; }
 }
 
 /* =============================================
@@ -119,7 +126,7 @@ nav.scrolled {
 
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: none; padding: 4px; z-index: 210;
+  background: none; border: none; cursor: pointer; padding: 4px; z-index: 210;
 }
 .hamburger span {
   display: block; width: 22px; height: 1.5px;
@@ -135,20 +142,20 @@ nav.scrolled {
   background: rgba(9,9,9,0.98);
   backdrop-filter: blur(20px);
   z-index: 190; flex-direction: column;
-  align-items: center; justify-content: center; gap: 2.5rem;
+  align-items: center; justify-content: center; gap: 2rem;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  font-family: var(--sans); font-size: 2.2rem; font-weight: 800;
+  font-family: var(--sans); font-size: clamp(1.6rem, 7vw, 2.2rem); font-weight: 800;
   letter-spacing: -0.01em; color: var(--text-dim);
   text-decoration: none; text-transform: uppercase; transition: color 0.2s;
 }
 .mobile-menu a:hover, .mobile-menu a.active { color: var(--red-bright); }
 .mobile-menu .mobile-cta {
-  font-family: var(--mono); font-size: 0.8rem;
+  font-family: var(--mono); font-size: 0.78rem;
   letter-spacing: 0.1em; padding: 0.8rem 2rem;
   border: 1px solid var(--red); color: var(--red-bright);
-  text-decoration: none; text-transform: uppercase; margin-top: 1rem;
+  text-decoration: none; text-transform: uppercase; margin-top: 0.5rem;
 }
 
 /* =============================================
@@ -175,7 +182,7 @@ nav.scrolled {
 .btn-outline:hover { border-color: var(--text-dimmer); color: var(--text); }
 
 /* =============================================
-   PAGE HEADER (páginas interiores)
+   PAGE HEADER
    ============================================= */
 .page-header {
   padding: 12rem 5rem 6rem;
@@ -204,7 +211,7 @@ nav.scrolled {
 }
 .page-tag::before { content: '//'; color: var(--text-dimmer); }
 .page-header h1 {
-  font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 800;
+  font-size: clamp(2.6rem, 6vw, 5.5rem); font-weight: 800;
   line-height: 0.95; letter-spacing: -0.03em; position: relative;
 }
 .page-header .sub {
@@ -226,7 +233,7 @@ section { padding: 6rem 5rem; position: relative; }
 }
 .section-tag::before { content: '//'; color: var(--text-dimmer); }
 .section-title {
-  font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800;
+  font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 800;
   letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 1.2rem;
 }
 .section-desc {
@@ -272,6 +279,7 @@ footer {
   border-top: 1px solid var(--border);
   padding: 2.5rem 5rem;
   display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
 }
 .footer-logo {
   font-size: 0.85rem; font-weight: 800;
@@ -279,7 +287,7 @@ footer {
   display: flex; align-items: center; gap: 8px; text-decoration: none;
 }
 .footer-logo svg { width: 14px; height: 18px; }
-.footer-links { display: flex; gap: 2rem; }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
 .footer-links a {
   font-family: var(--mono); font-size: 0.65rem;
   color: var(--text-dimmer); text-decoration: none;
@@ -306,14 +314,43 @@ footer {
 .fade-up.d5 { transition-delay: 0.5s; }
 
 /* =============================================
-   RESPONSIVE
+   RESPONSIVE — TABLET (max 1024px)
    ============================================= */
-@media (max-width: 900px) {
-  nav { padding: 1.1rem 1.8rem; }
+@media (max-width: 1024px) {
+  nav { padding: 1.2rem 2.5rem; }
+  section { padding: 5rem 2.5rem; }
+  .page-header { padding: 11rem 2.5rem 5rem; }
+  footer { padding: 2rem 2.5rem; }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (max 768px)
+   ============================================= */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.4rem; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
-  section { padding: 4rem 1.8rem; }
-  .page-header { padding: 9rem 1.8rem 4rem; }
-  footer { flex-direction: column; gap: 1.2rem; text-align: center; padding: 2rem 1.8rem; }
-  .footer-links { justify-content: center; flex-wrap: wrap; }
+  section { padding: 4rem 1.4rem; }
+  .page-header { padding: 8rem 1.4rem 3.5rem; }
+  .page-header .sub { font-size: 0.82rem; }
+  footer {
+    flex-direction: column; gap: 1.2rem;
+    text-align: center; padding: 2rem 1.4rem;
+    align-items: center;
+  }
+  .footer-links { justify-content: center; }
+  .btn-primary, .btn-outline {
+    padding: 0.8rem 1.8rem; font-size: 0.72rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — SMALL MOBILE (max 480px)
+   ============================================= */
+@media (max-width: 480px) {
+  nav { padding: 0.9rem 1.2rem; }
+  .nav-logo { font-size: 0.82rem; letter-spacing: 0.1em; }
+  section { padding: 3.5rem 1.2rem; }
+  .page-header { padding: 7.5rem 1.2rem 3rem; }
+  .section-title { font-size: clamp(1.6rem, 8vw, 2.2rem); }
 }

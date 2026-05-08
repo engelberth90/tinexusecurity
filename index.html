@@ -46,12 +46,12 @@
       content: ''; display: block; width: 28px; height: 1px; background: var(--red);
     }
     .hero h1 {
-      font-size: clamp(4rem, 10vw, 8rem); font-weight: 800;
+      font-size: clamp(3.2rem, 10vw, 8rem); font-weight: 800;
       line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 0.4rem;
     }
     .hero h1 .accent { color: var(--red-bright); display: block; }
     .hero-sub {
-      font-family: var(--mono); font-size: 0.9rem;
+      font-family: var(--mono); font-size: clamp(0.78rem, 2vw, 0.9rem);
       color: var(--text-dim); line-height: 1.8;
       max-width: 520px; margin: 2rem auto 3rem; letter-spacing: 0.01em;
     }
@@ -75,7 +75,6 @@
       background: var(--char-2);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       display: grid; grid-template-columns: repeat(4, 1fr);
-      padding: 0;
     }
     .stat {
       padding: 2.5rem 2rem; text-align: center;
@@ -83,7 +82,7 @@
     }
     .stat:last-child { border-right: none; }
     .stat-num {
-      font-size: 2.5rem; font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800;
       color: var(--red-bright); letter-spacing: -0.03em;
       display: block; line-height: 1;
     }
@@ -122,7 +121,7 @@
       color: var(--text-dimmer); letter-spacing: 0.2em; margin-bottom: 1.2rem;
     }
     .service-icon { font-size: 1.6rem; margin-bottom: 1.2rem; display: block; }
-    .service-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
+    .service-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.7rem; }
     .service-desc {
       font-family: var(--mono); font-size: 0.74rem;
       color: var(--text-dim); line-height: 1.7;
@@ -141,9 +140,8 @@
       padding: 7rem 5rem; display: flex; flex-direction: column; justify-content: center;
     }
     .big-quote {
-      font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 800;
-      letter-spacing: -0.02em; line-height: 1.15;
-      color: var(--text);
+      font-size: clamp(1.3rem, 2.5vw, 2.2rem); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.2; color: var(--text);
     }
     .big-quote em { color: var(--red-bright); font-style: normal; }
     .quote-source {
@@ -151,9 +149,7 @@
       color: var(--text-dimmer); letter-spacing: 0.12em;
       margin-top: 2rem; text-transform: uppercase;
     }
-    .metric-row {
-      display: flex; flex-direction: column; gap: 1.5rem;
-    }
+    .metric-row { display: flex; flex-direction: column; gap: 1.5rem; }
     .metric {
       display: flex; align-items: center; gap: 1.5rem;
       padding: 1.2rem 1.5rem; border: 1px solid var(--border);
@@ -161,7 +157,7 @@
     }
     .metric:hover { border-color: var(--red); }
     .metric-val {
-      font-size: 2rem; font-weight: 800;
+      font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800;
       color: var(--red-bright); line-height: 1; flex-shrink: 0;
     }
     .metric-text h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
@@ -173,20 +169,38 @@
       text-align: center; padding: 7rem 5rem;
     }
     .home-cta .section-tag { justify-content: center; }
-    .home-cta .section-title { font-size: clamp(2.5rem, 5vw, 4rem); }
+    .home-cta .section-title { font-size: clamp(2rem, 5vw, 4rem); }
     .home-cta .section-desc { margin: 0 auto 3rem; max-width: 480px; }
 
-    /* responsive */
-    @media (max-width: 900px) {
-      .hero { padding: 7rem 1.8rem 5rem; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-teaser-left, .about-teaser-right { padding: 5rem 2.5rem; }
+      .home-cta { padding: 6rem 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 6rem 1.4rem 5rem; }
+      .hero-badge { font-size: 0.6rem; letter-spacing: 0.14em; }
+      .hero-sub br { display: none; }
+      .scroll-hint { display: none; }
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-right: 1px solid var(--border); }
       .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--border); }
+      .stat { padding: 1.8rem 1rem; }
       .services-grid { grid-template-columns: 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; margin-bottom: 2rem; }
       .about-teaser { grid-template-columns: 1fr; }
-      .about-teaser-left { padding: 4rem 1.8rem; border-right: none; border-bottom: 1px solid var(--border); }
-      .about-teaser-right { padding: 4rem 1.8rem; }
-      .home-cta { padding: 5rem 1.8rem; }
+      .about-teaser-left { padding: 4rem 1.4rem; border-right: none; border-bottom: 1px solid var(--border); }
+      .about-teaser-right { padding: 4rem 1.4rem; }
+      .home-cta { padding: 5rem 1.4rem; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 5.5rem 1.2rem 4rem; }
+      .hero-badge { display: none; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .stat { padding: 1.4rem 0.8rem; }
+      .metric { flex-direction: column; text-align: center; padding: 1.2rem; gap: 0.5rem; }
     }
   </style>
 </head>
@@ -195,7 +209,6 @@
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
 
-  <!-- NAV -->
   <nav id="navbar">
     <a href="index.html" class="nav-logo">
       <svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,12 +225,9 @@
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
     <a href="contacto.html" class="nav-cta">Iniciar Proyecto</a>
-    <button class="hamburger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
   </nav>
 
-  <!-- MOBILE MENU -->
   <div class="mobile-menu">
     <a href="index.html" class="active">Home</a>
     <a href="servicios.html">Servicios</a>
@@ -226,16 +236,12 @@
     <a href="contacto.html" class="mobile-cta">Iniciar Proyecto</a>
   </div>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-inner">
       <div class="hero-badge">Seguridad Ofensiva Profesional</div>
-      <h1>
-        WE HACK
-        <span class="accent">BEFORE.</span>
-      </h1>
+      <h1>WE HACK<span class="accent">BEFORE.</span></h1>
       <p class="hero-sub">
         Identificamos vulnerabilidades críticas en tu infraestructura antes que los atacantes reales.<br>
         Red team, pentesting y análisis de superficie de ataque a nivel profesional.
@@ -251,7 +257,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat fade-up">
       <span class="stat-num">100+</span>
@@ -262,7 +267,7 @@
       <span class="stat-label">Satisfacción</span>
     </div>
     <div class="stat fade-up d2">
-      <span class="stat-num">72h</span>
+      <span class="stat-num">24h</span>
       <span class="stat-label">Tiempo de Respuesta</span>
     </div>
     <div class="stat fade-up d3">
@@ -271,7 +276,6 @@
     </div>
   </div>
 
-  <!-- SERVICES PREVIEW -->
   <section class="services-preview">
     <div class="services-header">
       <div>
@@ -290,38 +294,37 @@
       </a>
       <a href="servicios.html" class="service-card fade-up d1">
         <div class="service-num">02</div>
-        <span class="service-icon">🌐</span>
-        <div class="service-name">Pentesting de Red</div>
-        <p class="service-desc">Análisis interno y externo. Escaneo activo, explotación y movimiento lateral en redes corporativas.</p>
+        <span class="service-icon">🏢</span>
+        <div class="service-name">Pentesting de Infraestructura Interna</div>
+        <p class="service-desc">Active Directory, movimiento lateral, Kerberoasting, BloodHound y escalada a Domain Admin.</p>
       </a>
       <a href="servicios.html" class="service-card fade-up d2">
         <div class="service-num">03</div>
+        <span class="service-icon">🌍</span>
+        <div class="service-name">Pentesting Externo</div>
+        <p class="service-desc">OSINT, reconocimiento de superficie de ataque, análisis de exposición y explotación perimetral.</p>
+      </a>
+      <a href="servicios.html" class="service-card fade-up">
+        <div class="service-num">04</div>
         <span class="service-icon">⚔️</span>
         <div class="service-name">Red Team</div>
         <p class="service-desc">Simulación completa de adversario APT. Phishing, acceso físico, persistencia y escalada.</p>
       </a>
-      <a href="servicios.html" class="service-card fade-up">
-        <div class="service-num">04</div>
+      <a href="servicios.html" class="service-card fade-up d1">
+        <div class="service-num">05</div>
         <span class="service-icon">📱</span>
         <div class="service-name">Pentesting Móvil</div>
         <p class="service-desc">Android e iOS. Análisis estático/dinámico, interceptación de tráfico, bypass de certificate pinning.</p>
       </a>
-      <a href="servicios.html" class="service-card fade-up d1">
-        <div class="service-num">05</div>
-        <span class="service-icon">☁️</span>
-        <div class="service-name">Cloud Security</div>
-        <p class="service-desc">AWS, Azure, GCP. IAM misconfigs, S3 buckets, privilege escalation en entornos cloud.</p>
-      </a>
       <a href="servicios.html" class="service-card fade-up d2">
         <div class="service-num">06</div>
-        <span class="service-icon">🔐</span>
-        <div class="service-name">Active Directory</div>
-        <p class="service-desc">Kerberoasting, Pass-the-Hash, DCSync, BloodHound. Escalada a Domain Admin documentada.</p>
+        <span class="service-icon">🛡️</span>
+        <div class="service-name">Auditoría de Seguridad de la Información</div>
+        <p class="service-desc">Revisión de políticas, controles, cumplimiento ISO 27001 y gestión de riesgos de la información.</p>
       </a>
     </div>
   </section>
 
-  <!-- ABOUT TEASER -->
   <div class="about-teaser">
     <div class="about-teaser-left">
       <p class="big-quote fade-up">
@@ -329,7 +332,7 @@
       </p>
       <p class="quote-source fade-up d1">— Tinexus Security Team</p>
       <br><br>
-      <a href="nosotros.html" class="btn-outline fade-up d2">Conoce al equipo →</a>
+      <a href="nosotros.html" class="btn-outline fade-up d2">Conoce más →</a>
     </div>
     <div class="about-teaser-right">
       <div class="metric-row">
@@ -344,7 +347,7 @@
           <span class="metric-val">PTES</span>
           <div class="metric-text">
             <h4>Metodología estándar</h4>
-            <p>PTES, OWASP, NIST y MITRE ATT&CK como base</p>
+            <p>PTES, OWASP, NIST y MITRE ATT&amp;CK como base</p>
           </div>
         </div>
         <div class="metric fade-up d2">
@@ -358,15 +361,13 @@
     </div>
   </div>
 
-  <!-- HOME CTA -->
   <section class="home-cta">
     <div class="section-tag fade-up">Contacto</div>
     <h2 class="section-title fade-up">¿Listo para saber<br>qué tan seguro estás?</h2>
-    <p class="section-desc fade-up">Primera consulta sin costo. Cuéntanos sobre tu infraestructura y te enviamos una propuesta en menos de 48 horas.</p>
+    <p class="section-desc fade-up">Primera consulta sin costo. Cuéntanos sobre tu infraestructura y te enviamos una propuesta en menos de 24 horas.</p>
     <a href="contacto.html" class="btn-primary fade-up">Solicitar Propuesta</a>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <a href="index.html" class="footer-logo">
       <svg viewBox="0 0 60 80" fill="none">

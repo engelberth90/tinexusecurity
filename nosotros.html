@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nosotros — Tinexus Security</title>
-  <meta name="description" content="Equipo de hackers ofensivos con experiencia real en CTFs, bug bounty y red teaming. Conoce a Tinexus Security.">
+  <meta name="description" content="Equipo de hackers ofensivos con experiencia en banca, cooperativas y múltiples sectores. Conoce a Tinexus Security.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ── MANIFESTO ── */
+    /* MANIFESTO */
     .manifesto {
       background: var(--char-2);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -20,10 +20,6 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
     }
     .manifesto-text .section-desc { max-width: 100%; margin-top: 1.5rem; }
-    .manifesto-text .section-desc + .section-desc { margin-top: 1rem; }
-    .manifesto-visual {
-      position: relative;
-    }
     .stat-stack { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
     .stat-row {
       display: grid; grid-template-columns: 100px 1fr;
@@ -38,7 +34,73 @@
     .stat-row-info h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
     .stat-row-info p { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); }
 
-    /* ── VALUES ── */
+    /* SECTORS */
+    .sectors {
+      background: var(--char);
+    }
+    .sectors-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 4rem;
+    }
+    .sector-card {
+      background: var(--char-2); padding: 2.2rem 2rem;
+      text-align: center; transition: background 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .sector-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--red-bright);
+      transition: width 0.4s ease;
+    }
+    .sector-card:hover { background: var(--char-3); }
+    .sector-card:hover::after { width: 100%; }
+    .sector-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .sector-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .sector-card p { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); line-height: 1.6; }
+
+    /* CERTIFICATIONS */
+    .certifications {
+      background: var(--char-2);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .certs-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: start; margin-bottom: 4rem;
+    }
+    .certs-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .cert-card {
+      background: var(--char); padding: 2rem 1.5rem;
+      text-align: center; transition: background 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .cert-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--red); transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .cert-card:hover { background: var(--char-3); }
+    .cert-card:hover::before { transform: scaleX(1); }
+    .cert-name {
+      font-family: var(--mono); font-size: 1.1rem; font-weight: 700;
+      color: var(--red-bright); letter-spacing: 0.04em;
+      margin-bottom: 0.6rem; display: block;
+    }
+    .cert-full {
+      font-family: var(--mono); font-size: 0.65rem;
+      color: var(--text-dim); line-height: 1.5;
+    }
+    .cert-issuer {
+      font-family: var(--mono); font-size: 0.6rem;
+      color: var(--text-dimmer); margin-top: 8px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* VALUES */
     .values { background: var(--char); }
     .values-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -64,48 +126,12 @@
     .value-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; }
     .value-card p { font-family: var(--mono); font-size: 0.76rem; color: var(--text-dim); line-height: 1.75; }
 
-    /* ── TEAM ── */
-    .team {
-      background: var(--char-2);
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    }
-    .team-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem; margin-top: 4rem;
-    }
-    .team-card {
-      border: 1px solid var(--border); background: var(--char);
-      padding: 2.5rem; display: grid;
-      grid-template-columns: 70px 1fr; gap: 1.5rem;
-      transition: border-color 0.3s;
-    }
-    .team-card:hover { border-color: var(--border-2); }
-    .avatar {
-      width: 70px; height: 70px; border-radius: 50%;
-      background: var(--char-3); border: 1px solid var(--border-2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem; flex-shrink: 0;
-    }
-    .team-info h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
-    .team-role {
-      font-family: var(--mono); font-size: 0.68rem;
-      color: var(--red-bright); letter-spacing: 0.08em;
-      text-transform: uppercase; margin-bottom: 0.8rem;
-    }
-    .team-bio { font-family: var(--mono); font-size: 0.74rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1rem; }
-    .team-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-    .team-tag {
-      font-family: var(--mono); font-size: 0.6rem;
-      color: var(--text-dimmer); border: 1px solid var(--border);
-      padding: 2px 8px; letter-spacing: 0.05em;
-    }
-
-    /* ── TERMINAL ── */
-    .why-us { background: var(--char); }
+    /* WHY US */
+    .why-us { background: var(--char-2); border-top: 1px solid var(--border); }
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 4rem; }
     .why-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
     .why-item {
-      background: var(--char-2); padding: 1.8rem 2rem;
+      background: var(--char); padding: 1.8rem 2rem;
       display: flex; gap: 1.2rem; align-items: flex-start;
       transition: background 0.3s;
     }
@@ -114,21 +140,41 @@
     .why-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
     .why-item p { font-family: var(--mono); font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
 
-    /* ── CTA ── */
+    /* CTA */
     .nosotros-cta {
-      background: var(--char-2); border-top: 1px solid var(--border);
+      background: var(--char); border-top: 1px solid var(--border);
       text-align: center; padding: 7rem 5rem;
     }
     .nosotros-cta .section-tag { justify-content: center; }
     .nosotros-cta .section-desc { margin: 0 auto 3rem; }
 
-    @media (max-width: 900px) {
-      .manifesto { padding: 5rem 1.8rem; }
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .manifesto { padding: 5rem 2.5rem; }
+      .manifesto-grid { gap: 4rem; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+      .certs-grid { grid-template-columns: repeat(2, 1fr); }
+      .certs-intro { gap: 3rem; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .nosotros-cta { padding: 6rem 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      .manifesto { padding: 4rem 1.4rem; }
       .manifesto-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .stat-row { grid-template-columns: 70px 1fr; gap: 1rem; padding: 1.2rem 1.4rem; }
+      .stat-row-num { font-size: 1.5rem; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+      .certs-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .certs-grid { grid-template-columns: repeat(2, 1fr); }
       .values-grid { grid-template-columns: 1fr; }
-      .team-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .nosotros-cta { padding: 5rem 1.8rem; }
+      .nosotros-cta { padding: 5rem 1.4rem; }
+    }
+    @media (max-width: 480px) {
+      .sectors-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: repeat(2, 1fr); }
+      .cert-card { padding: 1.5rem 1rem; }
+      .cert-name { font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -137,7 +183,6 @@
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
 
-  <!-- NAV -->
   <nav id="navbar">
     <a href="index.html" class="nav-logo">
       <svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,9 +199,7 @@
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
     <a href="contacto.html" class="nav-cta">Iniciar Proyecto</a>
-    <button class="hamburger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="mobile-menu">
@@ -167,7 +210,6 @@
     <a href="contacto.html" class="mobile-cta">Iniciar Proyecto</a>
   </div>
 
-  <!-- PAGE HEADER -->
   <div class="page-header">
     <div class="page-header-bg"></div>
     <div class="page-header-grid"></div>
@@ -184,9 +226,9 @@
         <h2 class="section-title fade-up">Por qué existe<br>Tinexus.</h2>
         <p class="section-desc fade-up">Tinexus Security nació de la frustración con las auditorías tradicionales: reportes llenos de hallazgos de scanner, zero context, y cero valor real para el equipo de desarrollo.</p>
         <p class="section-desc fade-up d1" style="margin-top: 1rem;">Decidimos hacer algo diferente. Auditorías manuales, con contexto real, por personas que entienden cómo piensan los atacantes porque ellos mismos lo son. El nombre viene de la idea de conexiones en la red — el nexo entre el ataque y la defensa.</p>
-        <p class="section-desc fade-up d2" style="margin-top: 1rem;">Creemos que la seguridad real se construye entendiendo el atacante, no solo instalando más herramientas.</p>
+        <p class="section-desc fade-up d2" style="margin-top: 1rem;">Creemos que la seguridad real se construye entendiendo al atacante, no solo instalando más herramientas.</p>
       </div>
-      <div class="manifesto-visual">
+      <div>
         <div class="stat-stack">
           <div class="stat-row fade-up">
             <span class="stat-row-num">5+</span>
@@ -199,14 +241,14 @@
             <span class="stat-row-num">100+</span>
             <div class="stat-row-info">
               <h4>Engagements completados</h4>
-              <p>Pentest, red team y revisiones de código</p>
+              <p>Pentest, red team y auditorías de SI</p>
             </div>
           </div>
           <div class="stat-row fade-up d2">
-            <span class="stat-row-num">∞</span>
+            <span class="stat-row-num">8</span>
             <div class="stat-row-info">
-              <h4>Curiosidad técnica</h4>
-              <p>Siempre aprendiendo, siempre mejorando</p>
+              <h4>Certificaciones activas</h4>
+              <p>Reconocidas internacionalmente en seguridad ofensiva</p>
             </div>
           </div>
           <div class="stat-row fade-up d3">
@@ -217,6 +259,111 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section class="sectors">
+    <div class="section-tag fade-up">Experiencia sectorial</div>
+    <h2 class="section-title fade-up">Sectores donde<br>hemos trabajado.</h2>
+    <p class="section-desc fade-up">Entendemos la diferencia entre auditar una fintech y una cooperativa. Cada sector tiene sus propios riesgos, regulaciones y arquitecturas críticas.</p>
+    <div class="sectors-grid">
+      <div class="sector-card fade-up">
+        <span class="sector-icon">🏦</span>
+        <h3>Banca y Finanzas</h3>
+        <p>Bancos comerciales, instituciones financieras y plataformas de pagos. Evaluación de core bancario, APIs financieras y controles regulatorios.</p>
+      </div>
+      <div class="sector-card fade-up d1">
+        <span class="sector-icon">🤝</span>
+        <h3>Cooperativas</h3>
+        <p>Cooperativas de ahorro y crédito. Auditorías adaptadas a infraestructura mixta, sistemas heredados y entornos regulados localmente.</p>
+      </div>
+      <div class="sector-card fade-up d2">
+        <span class="sector-icon">🏥</span>
+        <h3>Salud</h3>
+        <p>Clínicas, hospitales y sistemas de gestión médica. Protección de datos sensibles de pacientes y cumplimiento de normativas de privacidad.</p>
+      </div>
+      <div class="sector-card fade-up d3">
+        <span class="sector-icon">🛒</span>
+        <h3>Retail y E-Commerce</h3>
+        <p>Plataformas de venta online y puntos de venta físicos. Seguridad de pasarelas de pago, inventarios y datos de clientes.</p>
+      </div>
+      <div class="sector-card fade-up">
+        <span class="sector-icon">🏭</span>
+        <h3>Manufactura e Industria</h3>
+        <p>Empresas industriales con infraestructura IT/OT. Evaluación de redes corporativas, sistemas SCADA adyacentes y control de accesos.</p>
+      </div>
+      <div class="sector-card fade-up d1">
+        <span class="sector-icon">📡</span>
+        <h3>Telecomunicaciones</h3>
+        <p>Proveedores de internet, ISPs y operadoras. Seguridad de infraestructura de red, portales de clientes y sistemas de gestión.</p>
+      </div>
+      <div class="sector-card fade-up d2">
+        <span class="sector-icon">🏛️</span>
+        <h3>Gobierno y Sector Público</h3>
+        <p>Entidades gubernamentales y municipalidades. Evaluación de sistemas de trámites, portales ciudadanos e infraestructura crítica.</p>
+      </div>
+      <div class="sector-card fade-up d3">
+        <span class="sector-icon">🚀</span>
+        <h3>Startups y SaaS</h3>
+        <p>Empresas tecnológicas en crecimiento. Pentesting de aplicaciones SaaS, APIs, pipelines CI/CD y entornos cloud nativos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="certifications">
+    <div class="certs-intro">
+      <div>
+        <div class="section-tag fade-up">Certificaciones</div>
+        <h2 class="section-title fade-up">Respaldados por<br>credenciales reales.</h2>
+        <p class="section-desc fade-up">Nuestras certificaciones no son solo papel — representan labs reales, exámenes completamente prácticos y habilidades que usamos en cada engagement.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <p class="section-desc fade-up" style="max-width:100%;">Todas nuestras certificaciones son de carácter práctico y ofensivo, emitidas por organizaciones reconocidas internacionalmente como eLearnSecurity, TCM Security y Altered Security.</p>
+      </div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card fade-up">
+        <span class="cert-name">eJPT</span>
+        <div class="cert-full">Junior Penetration Tester</div>
+        <div class="cert-issuer">eLearnSecurity</div>
+      </div>
+      <div class="cert-card fade-up d1">
+        <span class="cert-name">eWPT</span>
+        <div class="cert-full">Web Penetration Tester</div>
+        <div class="cert-issuer">eLearnSecurity</div>
+      </div>
+      <div class="cert-card fade-up d2">
+        <span class="cert-name">eWPTX</span>
+        <div class="cert-full">Web Penetration Tester eXtreme</div>
+        <div class="cert-issuer">eLearnSecurity</div>
+      </div>
+      <div class="cert-card fade-up d3">
+        <span class="cert-name">eMAPT</span>
+        <div class="cert-full">Mobile Application Penetration Tester</div>
+        <div class="cert-issuer">eLearnSecurity</div>
+      </div>
+      <div class="cert-card fade-up">
+        <span class="cert-name">PNPT</span>
+        <div class="cert-full">Practical Network Penetration Tester</div>
+        <div class="cert-issuer">TCM Security</div>
+      </div>
+      <div class="cert-card fade-up d1">
+        <span class="cert-name">CRTP</span>
+        <div class="cert-full">Certified Red Team Professional</div>
+        <div class="cert-issuer">Altered Security</div>
+      </div>
+      <div class="cert-card fade-up d2">
+        <span class="cert-name">CRTO</span>
+        <div class="cert-full">Certified Red Team Operator</div>
+        <div class="cert-issuer">Zero-Point Security</div>
+      </div>
+      <div class="cert-card fade-up d3">
+        <span class="cert-name">ISO 27001</span>
+        <div class="cert-full">Lead Auditor / Implementer</div>
+        <div class="cert-issuer">Information Security</div>
       </div>
     </div>
   </section>
@@ -266,74 +413,6 @@
     </div>
   </section>
 
-  <!-- TEAM -->
-  <section class="team">
-    <div class="section-tag fade-up">El equipo</div>
-    <h2 class="section-title fade-up">Las personas<br>detrás del fuego.</h2>
-    <p class="section-desc fade-up">Pequeño equipo, expertise concentrado. Cada engagement es trabajado por personas con experiencia real, no subcontratado.</p>
-    <div class="team-grid">
-      <div class="team-card fade-up">
-        <div class="avatar">👨‍💻</div>
-        <div class="team-info">
-          <h3>Fundador & Lead Pentester</h3>
-          <div class="team-role">Offensive Security Lead</div>
-          <p class="team-bio">Especialista en seguridad ofensiva con background en CTFs y bug bounty. Líder de engagements de red team y pentesting web/red. Arquitecto de la metodología Tinexus.</p>
-          <div class="team-tags">
-            <span class="team-tag">Web</span>
-            <span class="team-tag">Red Team</span>
-            <span class="team-tag">Active Directory</span>
-            <span class="team-tag">CTF Player</span>
-            <span class="team-tag">Bug Bounty</span>
-          </div>
-        </div>
-      </div>
-      <div class="team-card fade-up d1">
-        <div class="avatar">🧑‍💻</div>
-        <div class="team-info">
-          <h3>Network & Infrastructure</h3>
-          <div class="team-role">Network Security Specialist</div>
-          <p class="team-bio">Experto en infraestructura y redes corporativas. Análisis de Active Directory, movimiento lateral y ataques a protocolos. Certificado en seguridad ofensiva.</p>
-          <div class="team-tags">
-            <span class="team-tag">Network</span>
-            <span class="team-tag">AD</span>
-            <span class="team-tag">Pivoting</span>
-            <span class="team-tag">Cloud</span>
-          </div>
-        </div>
-      </div>
-      <div class="team-card fade-up">
-        <div class="avatar">👩‍💻</div>
-        <div class="team-info">
-          <h3>Mobile & Application Security</h3>
-          <div class="team-role">AppSec Specialist</div>
-          <p class="team-bio">Análisis de aplicaciones móviles y web. Reverse engineering, análisis de APIs y testing de aplicaciones móviles Android e iOS con enfoque en lógica de negocio.</p>
-          <div class="team-tags">
-            <span class="team-tag">Android</span>
-            <span class="team-tag">iOS</span>
-            <span class="team-tag">API</span>
-            <span class="team-tag">Burp Suite</span>
-            <span class="team-tag">Frida</span>
-          </div>
-        </div>
-      </div>
-      <div class="team-card fade-up d1">
-        <div class="avatar">🧑‍🔬</div>
-        <div class="team-info">
-          <h3>Cloud & DevSecOps</h3>
-          <div class="team-role">Cloud Security Engineer</div>
-          <p class="team-bio">Revisión de arquitecturas cloud y pipelines CI/CD. IAM analysis, container security y hardening de entornos AWS, Azure y GCP. Background en DevOps.</p>
-          <div class="team-tags">
-            <span class="team-tag">AWS</span>
-            <span class="team-tag">Azure</span>
-            <span class="team-tag">Docker</span>
-            <span class="team-tag">K8s</span>
-            <span class="team-tag">Terraform</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- WHY US -->
   <section class="why-us">
     <div class="why-grid">
@@ -376,7 +455,6 @@
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="nosotros-cta">
     <div class="section-tag">Siguiente paso</div>
     <h2 class="section-title fade-up">¿Quieres trabajar<br>con nosotros?</h2>
@@ -384,7 +462,6 @@
     <a href="contacto.html" class="btn-primary fade-up">Iniciar Conversación</a>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <a href="index.html" class="footer-logo">
       <svg viewBox="0 0 60 80" fill="none">
