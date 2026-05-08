@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Tinexus Security</title>
+  <meta name="description" content="Solicita una auditoría de seguridad o consulta con el equipo de Tinexus Security. Primera consulta sin costo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── CONTACT MAIN ── */
+    .contact-main {
+      background: var(--char);
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+    }
+    .contact-info {
+      padding: 6rem 5rem;
+      border-right: 1px solid var(--border);
+      background: var(--char-2);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .contact-form-area {
+      padding: 6rem 5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    /* Contact info items */
+    .contact-items { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+    .contact-item {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+    }
+    .contact-item:first-child { border-top: 1px solid var(--border); }
+    .contact-item-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .contact-item-label {
+      font-family: var(--mono); font-size: 0.62rem;
+      color: var(--text-dimmer); letter-spacing: 0.15em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .contact-item-val {
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--text); text-decoration: none;
+      transition: color 0.2s;
+    }
+    a.contact-item-val:hover { color: var(--red-bright); }
+    .contact-item-note {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--text-dimmer); margin-top: 3px;
+    }
+
+    .availability-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 0.68rem;
+      letter-spacing: 0.1em; color: #4EC9B0;
+      border: 1px solid rgba(78, 201, 176, 0.25);
+      background: rgba(78, 201, 176, 0.06);
+      padding: 6px 14px; margin-top: 2.5rem;
+    }
+    .availability-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #4EC9B0;
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-green {
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:0.5;transform:scale(0.8)}
+    }
+
+    /* ── FORM ── */
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.15em; color: var(--text-dimmer);
+      text-transform: uppercase; display: block; margin-bottom: 8px;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; background: var(--char-2);
+      border: 1px solid var(--border); color: var(--text);
+      font-family: var(--mono); font-size: 0.8rem;
+      padding: 0.85rem 1rem;
+      transition: border-color 0.2s; outline: none;
+      -webkit-appearance: none; appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--red);
+    }
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: var(--text-dimmer);
+    }
+    .form-select { cursor: pointer; }
+    .form-select option { background: var(--char-2); color: var(--text); }
+    .form-textarea { resize: vertical; min-height: 130px; line-height: 1.7; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit {
+      width: 100%; font-family: var(--mono); font-size: 0.8rem;
+      letter-spacing: 0.1em; padding: 1rem;
+      background: var(--red); color: #fff;
+      border: 1px solid var(--red); cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .form-submit:hover { background: var(--red-mid); transform: translateY(-1px); }
+    .form-submit:active { transform: translateY(0); }
+    .form-note {
+      font-family: var(--mono); font-size: 0.65rem;
+      color: var(--text-dimmer); text-align: center;
+      margin-top: 1rem; line-height: 1.6;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      background: var(--char-2);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 4rem;
+    }
+    .process-step {
+      background: var(--char); padding: 2.5rem 2rem;
+      transition: background 0.3s;
+    }
+    .process-step:hover { background: var(--char-3); }
+    .process-step-num {
+      font-family: var(--mono); font-size: 2.5rem;
+      font-weight: 700; color: var(--text-dimmer);
+      line-height: 1; margin-bottom: 1.2rem;
+      transition: color 0.3s;
+    }
+    .process-step:hover .process-step-num { color: var(--red-bright); }
+    .process-step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .process-step p { font-family: var(--mono); font-size: 0.73rem; color: var(--text-dim); line-height: 1.7; }
+
+    /* ── FAQ ── */
+    .faq { background: var(--char); }
+    .faq-list { margin-top: 3rem; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%; background: none; border: none;
+      text-align: left; padding: 1.5rem 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; cursor: none;
+      font-family: var(--sans); font-size: 1rem;
+      font-weight: 700; color: var(--text);
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--red-bright); }
+    .faq-icon {
+      font-size: 1.2rem; color: var(--text-dimmer);
+      flex-shrink: 0; transition: transform 0.3s;
+      font-family: var(--mono); font-weight: 400;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--red-bright); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; }
+    .faq-answer p {
+      font-family: var(--mono); font-size: 0.8rem;
+      color: var(--text-dim); line-height: 1.8;
+      padding-bottom: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-main { grid-template-columns: 1fr; }
+      .contact-info { padding: 4rem 1.8rem; border-right: none; border-bottom: 1px solid var(--border); }
+      .contact-form-area { padding: 4rem 1.8rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 2C30 2 50 20 50 38C50 51 41 58 30 59C19 58 10 51 10 38C10 20 30 2 30 2Z" fill="#8B0000"/>
+        <path d="M30 16C30 16 43 29 43 40C43 49 38 54 30 55C22 54 17 49 17 40C17 29 30 16 30 16Z" fill="#C0392B"/>
+        <path d="M30 30C30 30 37 37 37 44C37 49 34 52 30 52C26 52 23 49 23 44C23 37 30 30 30 30Z" fill="#E74C3C"/>
+      </svg>
+      TINEXUS SECURITY
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contacto.html" class="active">Contacto</a></li>
+    </ul>
+    <a href="contacto.html" class="nav-cta">Iniciar Proyecto</a>
+    <button class="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html" class="active">Contacto</a>
+    <a href="contacto.html" class="mobile-cta">Iniciar Proyecto</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-bg"></div>
+    <div class="page-header-grid"></div>
+    <div class="page-tag fade-up">Contacto</div>
+    <h1 class="fade-up">Hablemos<br>de seguridad.</h1>
+    <p class="sub fade-up d1">Primera consulta sin costo. Cuéntanos qué necesitas y te respondemos en menos de 24 horas hábiles con una propuesta personalizada.</p>
+  </div>
+
+  <!-- CONTACT MAIN -->
+  <div class="contact-main">
+
+    <!-- INFO -->
+    <div class="contact-info">
+      <div class="section-tag fade-up">Información</div>
+      <h2 class="section-title fade-up" style="font-size: clamp(1.8rem, 3vw, 2.4rem);">¿Cómo<br>contactarnos?</h2>
+      <p class="section-desc fade-up">Elige el canal que más te convenga. Respondemos rápido.</p>
+
+      <div class="contact-items">
+        <div class="contact-item fade-up">
+          <span class="contact-item-icon">📧</span>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <a href="mailto:contacto@tinexussecurity.com" class="contact-item-val">contacto@tinexussecurity.com</a>
+            <div class="contact-item-note">Para propuestas y consultas generales</div>
+          </div>
+        </div>
+        <div class="contact-item fade-up d1">
+          <span class="contact-item-icon">💬</span>
+          <div>
+            <div class="contact-item-label">LinkedIn</div>
+            <a href="https://linkedin.com/company/tinexus-security" target="_blank" class="contact-item-val">Tinexus Security</a>
+            <div class="contact-item-note">Para networking y consultas profesionales</div>
+          </div>
+        </div>
+        <div class="contact-item fade-up d2">
+          <span class="contact-item-icon">🌐</span>
+          <div>
+            <div class="contact-item-label">Dominio</div>
+            <span class="contact-item-val">tinexussecurity.com</span>
+            <div class="contact-item-note">Guatemala · Disponible remotamente</div>
+          </div>
+        </div>
+        <div class="contact-item fade-up d3">
+          <span class="contact-item-icon">⏰</span>
+          <div>
+            <div class="contact-item-label">Tiempo de respuesta</div>
+            <span class="contact-item-val">Menos de 24 horas</span>
+            <div class="contact-item-note">En días hábiles · Urgentes en 4 horas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="availability-badge fade-up">
+        <span class="availability-dot"></span>
+        Disponible para nuevos proyectos
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form-area">
+      <div class="section-tag fade-up">Formulario</div>
+      <h2 class="section-title fade-up" style="font-size: clamp(1.8rem, 3vw, 2.4rem);">Solicitar<br>propuesta.</h2>
+
+      <form id="contactForm" style="margin-top: 2.5rem;" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="nombre">Nombre *</label>
+            <input type="text" id="nombre" class="form-input" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="empresa">Empresa</label>
+            <input type="text" id="empresa" class="form-input" placeholder="Tu empresa">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email *</label>
+          <input type="email" id="email" class="form-input" placeholder="tu@empresa.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="servicio">Servicio de interés *</label>
+          <select id="servicio" class="form-select" required>
+            <option value="" disabled selected>Selecciona un servicio...</option>
+            <option value="web">Pentesting Web</option>
+            <option value="red">Pentesting de Red</option>
+            <option value="redteam">Red Team</option>
+            <option value="mobile">Pentesting Móvil</option>
+            <option value="cloud">Cloud Security Review</option>
+            <option value="ad">Active Directory</option>
+            <option value="multiple">Múltiples servicios</option>
+            <option value="consulta">Consulta / No estoy seguro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mensaje">Cuéntanos tu caso *</label>
+          <textarea id="mensaje" class="form-textarea" placeholder="Describe qué necesitas auditar, tamaño de la organización, alcance estimado, urgencia y cualquier detalle relevante..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">
+          Enviar Solicitud
+        </button>
+        <p class="form-note">
+          Al enviar, aceptas que usemos tu email para responderte.<br>
+          Firmamos NDA antes de compartir cualquier información sensible.
+        </p>
+      </form>
+
+      <!-- Success state -->
+      <div id="formSuccess" style="display:none; text-align: center; padding: 3rem 0;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">✅</div>
+        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem;">¡Mensaje recibido!</h3>
+        <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--text-dim); line-height: 1.7;">
+          Te contactaremos en menos de 24 horas hábiles.<br>
+          Mientras tanto, puedes revisar nuestros <a href="servicios.html" style="color: var(--red-bright); text-decoration: none;">servicios</a>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="section-tag fade-up">Proceso</div>
+    <h2 class="section-title fade-up">¿Qué pasa después<br>de contactarnos?</h2>
+    <p class="section-desc fade-up">Sin burocracia. Del primer contacto al inicio del engagement en días.</p>
+    <div class="process-steps">
+      <div class="process-step fade-up">
+        <div class="process-step-num">01</div>
+        <h3>Consulta inicial</h3>
+        <p>Respondemos en menos de 24h. Call de 30 min para entender tu infraestructura, objetivos y alcance.</p>
+      </div>
+      <div class="process-step fade-up d1">
+        <div class="process-step-num">02</div>
+        <h3>Propuesta y NDA</h3>
+        <p>Enviamos propuesta personalizada con alcance, metodología, entregables y precio. Firmamos NDA antes de continuar.</p>
+      </div>
+      <div class="process-step fade-up d2">
+        <div class="process-step-num">03</div>
+        <h3>Kickoff</h3>
+        <p>Sesión de kickoff con el equipo. Definimos alcance final, reglas de engagement y canal de comunicación.</p>
+      </div>
+      <div class="process-step fade-up d3">
+        <div class="process-step-num">04</div>
+        <h3>Entrega y debriefing</h3>
+        <p>Reporte completo + sesión de debriefing. Re-test de remediaciones incluido sin costo adicional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="section-tag fade-up">FAQ</div>
+    <h2 class="section-title fade-up">Preguntas<br>frecuentes.</h2>
+    <div class="faq-list fade-up d1">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Cuánto cuesta un pentest?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Depende del alcance, tipo de servicio y complejidad. Un pentesting web de aplicación mediana puede arrancar desde $800 USD. Un red team engagement completo puede superar los $5,000 USD. Siempre enviamos propuesta personalizada antes de iniciar.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Cuánto tiempo dura un engagement?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Un pentesting web típico dura entre 3 y 10 días hábiles dependiendo del alcance. Un red team engagement completo puede durar 2-4 semanas. El reporte se entrega dentro de los 5 días posteriores al fin del testing.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Trabajan con empresas fuera de Guatemala?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Sí. La mayoría de nuestros servicios son 100% remotos y trabajamos con clientes en toda Latinoamérica. Para engagements que requieran presencia física, evaluamos cada caso.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué pasa si encuentran algo crítico durante el testing?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Si encontramos una vulnerabilidad crítica que requiera atención inmediata, te notificamos de forma directa antes del reporte final para que puedas tomar acción de inmediato. No esperamos al cierre del engagement.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué necesito tener listo antes de contratar?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Solo necesitas tener claro qué quieres proteger y tener la autorización legal para hacerlo. Nosotros te guiamos en el resto: alcance, reglas de engagement, credenciales necesarias y todo el proceso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="footer-logo">
+      <svg viewBox="0 0 60 80" fill="none">
+        <path d="M30 2C30 2 50 20 50 38C50 51 41 58 30 59C19 58 10 51 10 38C10 20 30 2 30 2Z" fill="#8B0000"/>
+        <path d="M30 16C30 16 43 29 43 40C43 49 38 54 30 55C22 54 17 49 17 40C17 29 30 16 30 16Z" fill="#C0392B"/>
+      </svg>
+      TINEXUS SECURITY
+    </a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <div class="footer-copy">© 2025 Tinexus Security · We Hack Before</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+      setTimeout(() => {
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }, 1200);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros — Tinexus Security</title>
+  <meta name="description" content="Equipo de hackers ofensivos con experiencia real en CTFs, bug bounty y red teaming. Conoce a Tinexus Security.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── MANIFESTO ── */
+    .manifesto {
+      background: var(--char-2);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 7rem 5rem;
+    }
+    .manifesto-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    .manifesto-text .section-desc { max-width: 100%; margin-top: 1.5rem; }
+    .manifesto-text .section-desc + .section-desc { margin-top: 1rem; }
+    .manifesto-visual {
+      position: relative;
+    }
+    .stat-stack { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
+    .stat-row {
+      display: grid; grid-template-columns: 100px 1fr;
+      background: var(--char); padding: 1.5rem 2rem; gap: 1.5rem;
+      align-items: center; transition: background 0.3s;
+    }
+    .stat-row:hover { background: var(--char-3); }
+    .stat-row-num {
+      font-size: 2rem; font-weight: 800;
+      color: var(--red-bright); letter-spacing: -0.02em; line-height: 1;
+    }
+    .stat-row-info h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+    .stat-row-info p { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); }
+
+    /* ── VALUES ── */
+    .values { background: var(--char); }
+    .values-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 4rem;
+    }
+    .value-card {
+      background: var(--char-2); padding: 2.8rem;
+      position: relative; overflow: hidden; transition: background 0.3s;
+    }
+    .value-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--red-bright);
+      transition: width 0.5s ease;
+    }
+    .value-card:hover { background: var(--char-3); }
+    .value-card:hover::after { width: 100%; }
+    .value-num {
+      font-family: var(--mono); font-size: 0.62rem;
+      color: var(--text-dimmer); letter-spacing: 0.2em; margin-bottom: 1.5rem;
+    }
+    .value-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
+    .value-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; }
+    .value-card p { font-family: var(--mono); font-size: 0.76rem; color: var(--text-dim); line-height: 1.75; }
+
+    /* ── TEAM ── */
+    .team {
+      background: var(--char-2);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem; margin-top: 4rem;
+    }
+    .team-card {
+      border: 1px solid var(--border); background: var(--char);
+      padding: 2.5rem; display: grid;
+      grid-template-columns: 70px 1fr; gap: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    .team-card:hover { border-color: var(--border-2); }
+    .avatar {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: var(--char-3); border: 1px solid var(--border-2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; flex-shrink: 0;
+    }
+    .team-info h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+    .team-role {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--red-bright); letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .team-bio { font-family: var(--mono); font-size: 0.74rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1rem; }
+    .team-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .team-tag {
+      font-family: var(--mono); font-size: 0.6rem;
+      color: var(--text-dimmer); border: 1px solid var(--border);
+      padding: 2px 8px; letter-spacing: 0.05em;
+    }
+
+    /* ── TERMINAL ── */
+    .why-us { background: var(--char); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 4rem; }
+    .why-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
+    .why-item {
+      background: var(--char-2); padding: 1.8rem 2rem;
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      transition: background 0.3s;
+    }
+    .why-item:hover { background: var(--char-3); }
+    .why-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .why-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .why-item p { font-family: var(--mono); font-size: 0.73rem; color: var(--text-dim); line-height: 1.65; }
+
+    /* ── CTA ── */
+    .nosotros-cta {
+      background: var(--char-2); border-top: 1px solid var(--border);
+      text-align: center; padding: 7rem 5rem;
+    }
+    .nosotros-cta .section-tag { justify-content: center; }
+    .nosotros-cta .section-desc { margin: 0 auto 3rem; }
+
+    @media (max-width: 900px) {
+      .manifesto { padding: 5rem 1.8rem; }
+      .manifesto-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .nosotros-cta { padding: 5rem 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 2C30 2 50 20 50 38C50 51 41 58 30 59C19 58 10 51 10 38C10 20 30 2 30 2Z" fill="#8B0000"/>
+        <path d="M30 16C30 16 43 29 43 40C43 49 38 54 30 55C22 54 17 49 17 40C17 29 30 16 30 16Z" fill="#C0392B"/>
+        <path d="M30 30C30 30 37 37 37 44C37 49 34 52 30 52C26 52 23 49 23 44C23 37 30 30 30 30Z" fill="#E74C3C"/>
+      </svg>
+      TINEXUS SECURITY
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="nosotros.html" class="active">Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <a href="contacto.html" class="nav-cta">Iniciar Proyecto</a>
+    <button class="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="nosotros.html" class="active">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="contacto.html" class="mobile-cta">Iniciar Proyecto</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-bg"></div>
+    <div class="page-header-grid"></div>
+    <div class="page-tag fade-up">Nosotros</div>
+    <h1 class="fade-up">Hackers reales.<br>No consultores.</h1>
+    <p class="sub fade-up d1">Nuestro equipo viene del mundo real. CTF players, bug bounty hunters y red teamers que conocen las tácticas actuales de los atacantes porque las practican.</p>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto">
+    <div class="manifesto-grid">
+      <div class="manifesto-text">
+        <div class="section-tag fade-up">Nuestra historia</div>
+        <h2 class="section-title fade-up">Por qué existe<br>Tinexus.</h2>
+        <p class="section-desc fade-up">Tinexus Security nació de la frustración con las auditorías tradicionales: reportes llenos de hallazgos de scanner, zero context, y cero valor real para el equipo de desarrollo.</p>
+        <p class="section-desc fade-up d1" style="margin-top: 1rem;">Decidimos hacer algo diferente. Auditorías manuales, con contexto real, por personas que entienden cómo piensan los atacantes porque ellos mismos lo son. El nombre viene de la idea de conexiones en la red — el nexo entre el ataque y la defensa.</p>
+        <p class="section-desc fade-up d2" style="margin-top: 1rem;">Creemos que la seguridad real se construye entendiendo el atacante, no solo instalando más herramientas.</p>
+      </div>
+      <div class="manifesto-visual">
+        <div class="stat-stack">
+          <div class="stat-row fade-up">
+            <span class="stat-row-num">5+</span>
+            <div class="stat-row-info">
+              <h4>Años de experiencia</h4>
+              <p>En seguridad ofensiva, CTFs y bug bounty</p>
+            </div>
+          </div>
+          <div class="stat-row fade-up d1">
+            <span class="stat-row-num">100+</span>
+            <div class="stat-row-info">
+              <h4>Engagements completados</h4>
+              <p>Pentest, red team y revisiones de código</p>
+            </div>
+          </div>
+          <div class="stat-row fade-up d2">
+            <span class="stat-row-num">∞</span>
+            <div class="stat-row-info">
+              <h4>Curiosidad técnica</h4>
+              <p>Siempre aprendiendo, siempre mejorando</p>
+            </div>
+          </div>
+          <div class="stat-row fade-up d3">
+            <span class="stat-row-num">0</span>
+            <div class="stat-row-info">
+              <h4>Breaches post-audit</h4>
+              <p>Ningún cliente auditado ha sido comprometido</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="section-tag fade-up">Valores</div>
+    <h2 class="section-title fade-up">Cómo trabajamos.</h2>
+    <p class="section-desc fade-up">Estos principios guían cada engagement, cada reporte y cada interacción con el cliente.</p>
+    <div class="values-grid">
+      <div class="value-card fade-up">
+        <div class="value-num">01</div>
+        <span class="value-icon">🎯</span>
+        <h3>Enfoque Adversarial Real</h3>
+        <p>Pensamos como atacantes porque venimos de ese mundo. No nos limitamos a ejecutar scanners — hacemos hacking manual que identifica lo que las herramientas no ven.</p>
+      </div>
+      <div class="value-card fade-up d1">
+        <div class="value-num">02</div>
+        <span class="value-icon">📋</span>
+        <h3>Reportes Accionables</h3>
+        <p>Nada de informes rellenos de texto genérico. Cada hallazgo viene con evidencia, impacto real de negocio y pasos concretos de remediación que el equipo puede ejecutar.</p>
+      </div>
+      <div class="value-card fade-up d2">
+        <div class="value-num">03</div>
+        <span class="value-icon">🔒</span>
+        <h3>Confidencialidad Total</h3>
+        <p>NDA firmado antes de iniciar cualquier engagement. Tus datos, arquitectura y hallazgos están protegidos. Zero data retention una vez entregado el reporte.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">04</div>
+        <span class="value-icon">🤝</span>
+        <h3>Transparencia Completa</h3>
+        <p>Te explicamos exactamente qué vamos a hacer, cómo y por qué. Comunicación directa durante todo el engagement, sin sorpresas.</p>
+      </div>
+      <div class="value-card fade-up d1">
+        <div class="value-num">05</div>
+        <span class="value-icon">📚</span>
+        <h3>Actualización Constante</h3>
+        <p>El threat landscape cambia todos los días. Nuestro equipo se mantiene al día con las últimas TTPs, CVEs y técnicas de evasión de defensas.</p>
+      </div>
+      <div class="value-card fade-up d2">
+        <div class="value-num">06</div>
+        <span class="value-icon">⚖️</span>
+        <h3>Ética Profesional</h3>
+        <p>Todo nuestro trabajo se realiza dentro del alcance acordado y con autorización explícita. La ética no es opcional, es fundamental.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team">
+    <div class="section-tag fade-up">El equipo</div>
+    <h2 class="section-title fade-up">Las personas<br>detrás del fuego.</h2>
+    <p class="section-desc fade-up">Pequeño equipo, expertise concentrado. Cada engagement es trabajado por personas con experiencia real, no subcontratado.</p>
+    <div class="team-grid">
+      <div class="team-card fade-up">
+        <div class="avatar">👨‍💻</div>
+        <div class="team-info">
+          <h3>Fundador & Lead Pentester</h3>
+          <div class="team-role">Offensive Security Lead</div>
+          <p class="team-bio">Especialista en seguridad ofensiva con background en CTFs y bug bounty. Líder de engagements de red team y pentesting web/red. Arquitecto de la metodología Tinexus.</p>
+          <div class="team-tags">
+            <span class="team-tag">Web</span>
+            <span class="team-tag">Red Team</span>
+            <span class="team-tag">Active Directory</span>
+            <span class="team-tag">CTF Player</span>
+            <span class="team-tag">Bug Bounty</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up d1">
+        <div class="avatar">🧑‍💻</div>
+        <div class="team-info">
+          <h3>Network & Infrastructure</h3>
+          <div class="team-role">Network Security Specialist</div>
+          <p class="team-bio">Experto en infraestructura y redes corporativas. Análisis de Active Directory, movimiento lateral y ataques a protocolos. Certificado en seguridad ofensiva.</p>
+          <div class="team-tags">
+            <span class="team-tag">Network</span>
+            <span class="team-tag">AD</span>
+            <span class="team-tag">Pivoting</span>
+            <span class="team-tag">Cloud</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="avatar">👩‍💻</div>
+        <div class="team-info">
+          <h3>Mobile & Application Security</h3>
+          <div class="team-role">AppSec Specialist</div>
+          <p class="team-bio">Análisis de aplicaciones móviles y web. Reverse engineering, análisis de APIs y testing de aplicaciones móviles Android e iOS con enfoque en lógica de negocio.</p>
+          <div class="team-tags">
+            <span class="team-tag">Android</span>
+            <span class="team-tag">iOS</span>
+            <span class="team-tag">API</span>
+            <span class="team-tag">Burp Suite</span>
+            <span class="team-tag">Frida</span>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up d1">
+        <div class="avatar">🧑‍🔬</div>
+        <div class="team-info">
+          <h3>Cloud & DevSecOps</h3>
+          <div class="team-role">Cloud Security Engineer</div>
+          <p class="team-bio">Revisión de arquitecturas cloud y pipelines CI/CD. IAM analysis, container security y hardening de entornos AWS, Azure y GCP. Background en DevOps.</p>
+          <div class="team-tags">
+            <span class="team-tag">AWS</span>
+            <span class="team-tag">Azure</span>
+            <span class="team-tag">Docker</span>
+            <span class="team-tag">K8s</span>
+            <span class="team-tag">Terraform</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us">
+    <div class="why-grid">
+      <div>
+        <div class="section-tag fade-up">Diferenciadores</div>
+        <h2 class="section-title fade-up">Por qué elegirnos<br>a nosotros.</h2>
+        <p class="section-desc fade-up" style="margin-bottom: 3rem;">No somos la opción más barata ni la más cara. Somos la opción que entrega valor real.</p>
+        <a href="contacto.html" class="btn-primary fade-up">Hablar con el equipo</a>
+      </div>
+      <div class="why-list">
+        <div class="why-item fade-up">
+          <span class="why-icon">🔍</span>
+          <div>
+            <h4>Hacking manual, no solo scanners</h4>
+            <p>Nessus y Burp son herramientas, no el trabajo. El 70% de los hallazgos críticos los encontramos manualmente.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up d1">
+          <span class="why-icon">⚡</span>
+          <div>
+            <h4>Comunicación directa durante el engagement</h4>
+            <p>Canal directo con el equipo técnico. Si encontramos algo crítico, te avisamos de inmediato, no esperas al reporte final.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up d2">
+          <span class="why-icon">🎓</span>
+          <div>
+            <h4>Re-test incluido sin costo adicional</h4>
+            <p>Una vez que remedies los hallazgos críticos, validamos que los parches funcionen. Sin cargos extras.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up d3">
+          <span class="why-icon">🌎</span>
+          <div>
+            <h4>Contexto latinoamericano</h4>
+            <p>Entendemos la realidad de las empresas en la región: presupuestos, regulaciones y threat landscape local.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="nosotros-cta">
+    <div class="section-tag">Siguiente paso</div>
+    <h2 class="section-title fade-up">¿Quieres trabajar<br>con nosotros?</h2>
+    <p class="section-desc fade-up">Ya sea un pentest puntual o un programa de seguridad continuo, podemos ayudarte. Hablemos.</p>
+    <a href="contacto.html" class="btn-primary fade-up">Iniciar Conversación</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="footer-logo">
+      <svg viewBox="0 0 60 80" fill="none">
+        <path d="M30 2C30 2 50 20 50 38C50 51 41 58 30 59C19 58 10 51 10 38C10 20 30 2 30 2Z" fill="#8B0000"/>
+        <path d="M30 16C30 16 43 29 43 40C43 49 38 54 30 55C22 54 17 49 17 40C17 29 30 16 30 16Z" fill="#C0392B"/>
+      </svg>
+      TINEXUS SECURITY
+    </a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <div class="footer-copy">© 2025 Tinexus Security · We Hack Before</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
