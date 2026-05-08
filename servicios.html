@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicios — Tinexus Security</title>
-  <meta name="description" content="Pentesting web, infraestructura interna, externo, red team, móvil, cloud y auditoría de seguridad de la información.">
+  <meta name="description" content="Pentesting web, infraestructura interna, externo, red team, móvil, wireless, API, ATMs, análisis de vulnerabilidades y auditoría de seguridad de la información.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
       border: 1px solid var(--border-2); padding: 4px 10px;
       white-space: nowrap;
     }
-    .service-full h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.8rem; line-height: 1.2; }
+    .service-full h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; line-height: 1.2; }
     .service-full p {
       font-family: var(--mono); font-size: 0.77rem;
       color: var(--text-dim); line-height: 1.8; margin-bottom: 1.5rem;
@@ -51,6 +51,9 @@
       text-transform: uppercase;
     }
     .tag.red { border-color: var(--red); color: var(--red-bright); }
+
+    /* Card que ocupa columna completa */
+    .service-full.full-width { grid-column: 1 / -1; }
 
     /* METHODOLOGY */
     .methodology {
@@ -65,8 +68,7 @@
     .step {
       display: grid; grid-template-columns: 56px 1fr;
       gap: 1.5rem; padding: 1.8rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
+      border-bottom: 1px solid var(--border); align-items: start;
     }
     .step:last-child { border-bottom: none; }
     .step-num {
@@ -122,7 +124,7 @@
     }
     @media (max-width: 768px) {
       .services-grid-full { grid-template-columns: 1fr; }
-      .service-full { padding: 2rem 1.4rem; }
+      .service-full, .service-full.full-width { padding: 2rem 1.4rem; grid-column: auto; }
       .service-full h3 { font-size: 1.1rem; }
       .method-grid { grid-template-columns: 1fr; gap: 3rem; }
       .del-grid { grid-template-columns: 1fr 1fr; }
@@ -173,19 +175,20 @@
     <div class="page-header-grid"></div>
     <div class="page-tag fade-up">Servicios</div>
     <h1 class="fade-up">Lo que<br>hacemos.</h1>
-    <p class="sub fade-up d1">Cubrimos todo el ciclo de ataque. Desde reconocimiento pasivo hasta reporte ejecutivo con plan de remediación detallado y sesión de debriefing.</p>
+    <p class="sub fade-up d1">Cubrimos todo el ciclo de ataque y de gestión de seguridad. Desde reconocimiento pasivo hasta reporte ejecutivo con plan de remediación detallado y sesión de debriefing.</p>
   </div>
 
   <section class="all-services">
     <div class="services-grid-full">
 
+      <!-- 01 -->
       <div class="service-full fade-up">
         <div class="service-full-header">
           <span class="service-icon-big">🔴</span>
           <span class="service-num-tag">01</span>
         </div>
         <h3>Pentesting Web</h3>
-        <p>Evaluación exhaustiva de aplicaciones web bajo metodología OWASP. Identificamos vulnerabilidades de lógica de negocio, controles de acceso rotos, inyecciones y más. Cada hallazgo viene documentado con CVSS score, evidencia y pasos de reproducción.</p>
+        <p>Evaluación exhaustiva de aplicaciones web bajo metodología OWASP. Identificamos vulnerabilidades de lógica de negocio, controles de acceso rotos, inyecciones y más. Cada hallazgo documentado con CVSS score, evidencia y pasos de reproducción.</p>
         <div class="service-tags">
           <span class="tag red">OWASP Top 10</span>
           <span class="tag">SQLi</span>
@@ -198,12 +201,34 @@
         </div>
       </div>
 
+      <!-- 02 -->
       <div class="service-full fade-up d1">
         <div class="service-full-header">
-          <span class="service-icon-big">🏢</span>
+          <span class="service-icon-big">🔌</span>
           <span class="service-num-tag">02</span>
         </div>
-        <h3>Pentesting de Infraestructura Interna</h3>
+        <h3>Auditoría de APIs</h3>
+        <p>Evaluación de seguridad en APIs REST, GraphQL y SOAP. Analizamos autenticación, autorización, rate limiting, exposición de datos sensibles, mass assignment, BOLA/BFLA y todos los riesgos del OWASP API Security Top 10. Ideal para productos SaaS y plataformas con integraciones de terceros.</p>
+        <div class="service-tags">
+          <span class="tag red">OWASP API Top 10</span>
+          <span class="tag">REST</span>
+          <span class="tag">GraphQL</span>
+          <span class="tag">SOAP</span>
+          <span class="tag">BOLA</span>
+          <span class="tag">BFLA</span>
+          <span class="tag">Mass Assignment</span>
+          <span class="tag">JWT</span>
+          <span class="tag">OAuth</span>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="service-full fade-up">
+        <div class="service-full-header">
+          <span class="service-icon-big">🏢</span>
+          <span class="service-num-tag">03</span>
+        </div>
+        <h3>Pentesting Interno</h3>
         <p>Evaluación completa del entorno interno corporativo. Analizamos la red interna, Active Directory, servicios expuestos dentro del perímetro y realizamos movimiento lateral documentando el camino desde acceso inicial hasta objetivos críticos. Kerberoasting, AS-REP Roasting, Pass-the-Hash, DCSync y escalada a Domain Admin.</p>
         <div class="service-tags">
           <span class="tag red">Active Directory</span>
@@ -215,14 +240,14 @@
           <span class="tag">Mimikatz</span>
           <span class="tag">Impacket</span>
           <span class="tag">Lateral Movement</span>
-          <span class="tag">Pivoting</span>
         </div>
       </div>
 
-      <div class="service-full fade-up">
+      <!-- 04 -->
+      <div class="service-full fade-up d1">
         <div class="service-full-header">
           <span class="service-icon-big">🌍</span>
-          <span class="service-num-tag">03</span>
+          <span class="service-num-tag">04</span>
         </div>
         <h3>Pentesting Externo</h3>
         <p>Recopilamos toda la información pública disponible de tu organización mediante OSINT y técnicas de reconocimiento pasivo y activo. Mapeamos la superficie de ataque externa, identificamos subdominios, servicios expuestos, credenciales filtradas y vectores de entrada desde internet. Luego pasamos a la fase de análisis de vulnerabilidades y explotación del perímetro.</p>
@@ -233,15 +258,53 @@
           <span class="tag">Shodan / Censys</span>
           <span class="tag">Leaked Creds</span>
           <span class="tag">Attack Surface</span>
-          <span class="tag">Vulnerability Analysis</span>
           <span class="tag">Perimeter Exploit</span>
         </div>
       </div>
 
+      <!-- 05 -->
+      <div class="service-full fade-up">
+        <div class="service-full-header">
+          <span class="service-icon-big">🔎</span>
+          <span class="service-num-tag">05</span>
+        </div>
+        <h3>Análisis de Vulnerabilidades Interno</h3>
+        <p>Identificación, clasificación y priorización de vulnerabilidades en la infraestructura interna sin llegar a explotarlas. Ideal para organizaciones que quieren un inventario de riesgos antes de un pentest completo, o como actividad de mantenimiento periódico. Incluye escaneo activo, validación manual de hallazgos y reporte priorizado por riesgo.</p>
+        <div class="service-tags">
+          <span class="tag red">Vulnerability Scan</span>
+          <span class="tag">Nessus</span>
+          <span class="tag">OpenVAS</span>
+          <span class="tag">CVE Analysis</span>
+          <span class="tag">Risk Prioritization</span>
+          <span class="tag">CVSS Scoring</span>
+          <span class="tag">Patch Guidance</span>
+        </div>
+      </div>
+
+      <!-- 06 -->
       <div class="service-full fade-up d1">
         <div class="service-full-header">
+          <span class="service-icon-big">🌐</span>
+          <span class="service-num-tag">06</span>
+        </div>
+        <h3>Análisis de Vulnerabilidades Externo</h3>
+        <p>Identificación y clasificación de vulnerabilidades en la superficie de ataque expuesta a internet. Sin explotación, con foco en visibilidad y priorización. Mapeamos todos los activos externos accesibles, escaneamos puertos y servicios, identificamos versiones vulnerables y credenciales expuestas, y entregamos un reporte priorizado por criticidad.</p>
+        <div class="service-tags">
+          <span class="tag red">External Scan</span>
+          <span class="tag">Asset Discovery</span>
+          <span class="tag">Port Scanning</span>
+          <span class="tag">Service Fingerprint</span>
+          <span class="tag">CVE Matching</span>
+          <span class="tag">Shodan</span>
+          <span class="tag">Exposed Services</span>
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div class="service-full fade-up">
+        <div class="service-full-header">
           <span class="service-icon-big">⚔️</span>
-          <span class="service-num-tag">04</span>
+          <span class="service-num-tag">07</span>
         </div>
         <h3>Red Team</h3>
         <p>Simulación completa de un actor malicioso avanzado (APT). Combinamos phishing, vishing, intrusión física y técnicas de evasión de defensas para probar el estado real de tus controles de seguridad end-to-end. El objetivo no es solo entrar — es medir cuánto tiempo tardas en detectar y responder.</p>
@@ -257,13 +320,14 @@
         </div>
       </div>
 
-      <div class="service-full fade-up">
+      <!-- 08 -->
+      <div class="service-full fade-up d1">
         <div class="service-full-header">
           <span class="service-icon-big">📱</span>
-          <span class="service-num-tag">05</span>
+          <span class="service-num-tag">08</span>
         </div>
         <h3>Pentesting Móvil</h3>
-        <p>Análisis estático y dinámico de aplicaciones Android e iOS. Revisamos el APK/IPA, interceptamos tráfico, verificamos almacenamiento inseguro, bypass de certificate pinning y validamos los controles de seguridad del lado del servidor y la lógica de negocio expuesta.</p>
+        <p>Análisis estático y dinámico de aplicaciones Android e iOS. Revisamos el APK/IPA, interceptamos tráfico, verificamos almacenamiento inseguro, bypass de certificate pinning y validamos los controles del lado del servidor y la lógica de negocio expuesta.</p>
         <div class="service-tags">
           <span class="tag red">Android</span>
           <span class="tag red">iOS</span>
@@ -276,13 +340,54 @@
         </div>
       </div>
 
+      <!-- 09 -->
+      <div class="service-full fade-up">
+        <div class="service-full-header">
+          <span class="service-icon-big">📡</span>
+          <span class="service-num-tag">09</span>
+        </div>
+        <h3>Pentesting Wireless</h3>
+        <p>Evaluación de la seguridad de redes inalámbricas corporativas. Identificamos puntos de acceso mal configurados, redes abiertas, WPS habilitado, protocolos débiles y realizamos ataques de captura de handshakes, evil twin y rogue AP para demostrar el riesgo real de acceso no autorizado a través de WiFi.</p>
+        <div class="service-tags">
+          <span class="tag red">WPA2/WPA3</span>
+          <span class="tag">Evil Twin</span>
+          <span class="tag">Rogue AP</span>
+          <span class="tag">Handshake Capture</span>
+          <span class="tag">WPS Attack</span>
+          <span class="tag">PMKID</span>
+          <span class="tag">Aircrack-ng</span>
+          <span class="tag">Deauth Attack</span>
+        </div>
+      </div>
+
+      <!-- 10 -->
       <div class="service-full fade-up d1">
         <div class="service-full-header">
+          <span class="service-icon-big">🏧</span>
+          <span class="service-num-tag">10</span>
+        </div>
+        <h3>Auditoría de ATMs</h3>
+        <p>Evaluación de seguridad de cajeros automáticos a nivel de software, red y hardware. Revisamos el sistema operativo, aplicaciones de gestión, comunicaciones de red, controles físicos y vectores de ataque como black-box attacks, jackpotting y acceso a la red del ATM. Especialmente relevante para instituciones bancarias y cooperativas.</p>
+        <div class="service-tags">
+          <span class="tag red">ATM Security</span>
+          <span class="tag red">Banca</span>
+          <span class="tag">OS Hardening</span>
+          <span class="tag">Network Analysis</span>
+          <span class="tag">Black-box Attack</span>
+          <span class="tag">XFS Protocol</span>
+          <span class="tag">Physical Security</span>
+          <span class="tag">Jackpotting</span>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="service-full fade-up">
+        <div class="service-full-header">
           <span class="service-icon-big">☁️</span>
-          <span class="service-num-tag">06</span>
+          <span class="service-num-tag">11</span>
         </div>
         <h3>Cloud Security Review</h3>
-        <p>Revisión de configuraciones en AWS, Azure y GCP. Identificamos IAM misconfigurations, recursos expuestos públicamente, privilege escalation paths en cloud y secrets hardcodeados en repositorios o imágenes Docker. Evaluamos el estado de seguridad de todo el entorno cloud.</p>
+        <p>Revisión de configuraciones en AWS, Azure y GCP. Identificamos IAM misconfigurations, recursos expuestos públicamente, privilege escalation paths en cloud y secrets hardcodeados en repositorios o imágenes Docker.</p>
         <div class="service-tags">
           <span class="tag red">AWS</span>
           <span class="tag red">Azure</span>
@@ -295,22 +400,21 @@
         </div>
       </div>
 
-      <div class="service-full fade-up" style="grid-column: 1 / -1;">
+      <!-- 12 -->
+      <div class="service-full fade-up d1">
         <div class="service-full-header">
           <span class="service-icon-big">🛡️</span>
-          <span class="service-num-tag">07</span>
+          <span class="service-num-tag">12</span>
         </div>
         <h3>Auditoría de Seguridad de la Información</h3>
-        <p>Evaluación integral de los controles, políticas y procesos de seguridad de la información de tu organización. Revisamos el estado actual frente a estándares internacionales como ISO/IEC 27001, identificamos brechas en la gestión de activos, control de accesos, gestión de incidentes y continuidad del negocio. Ideal para organizaciones que buscan certificarse, cumplir regulaciones o simplemente entender su nivel real de madurez en seguridad.</p>
+        <p>Evaluación integral de los controles, políticas y procesos de seguridad de la información. Revisamos el estado actual frente a ISO/IEC 27001, identificamos brechas en gestión de activos, control de accesos, gestión de incidentes y continuidad del negocio. Ideal para certificarse, cumplir regulaciones o entender el nivel real de madurez en seguridad.</p>
         <div class="service-tags">
           <span class="tag red">ISO 27001</span>
           <span class="tag red">Gap Analysis</span>
           <span class="tag">Gestión de Riesgos</span>
           <span class="tag">Control de Accesos</span>
           <span class="tag">Políticas de Seguridad</span>
-          <span class="tag">Gestión de Activos</span>
           <span class="tag">Business Continuity</span>
-          <span class="tag">Incident Management</span>
           <span class="tag">Compliance</span>
         </div>
       </div>
@@ -375,7 +479,7 @@
         <div class="standard fade-up d1">
           <div class="standard-name">OWASP</div>
           <h4>Open Web Application Security Project</h4>
-          <p>Referencia principal para evaluaciones de aplicaciones web y móviles. Top 10 y WSTG como guía.</p>
+          <p>Referencia principal para evaluaciones de aplicaciones web, móviles y APIs. Top 10, WSTG y API Top 10.</p>
         </div>
         <div class="standard fade-up d2">
           <div class="standard-name">MITRE ATT&amp;CK</div>
